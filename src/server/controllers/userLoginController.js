@@ -25,4 +25,10 @@ const userLogin = async (req, res, next) => {
   return res.json({ token });
 };
 
-module.exports = userLogin;
+const userRegister = async (req, res) => {
+  const newUser = req.body;
+  const createdUser = await User.create(newUser);
+  res.status(201).json(createdUser);
+};
+
+module.exports = { userLogin, userRegister };
