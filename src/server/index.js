@@ -5,6 +5,8 @@ const express = require("express");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const { notFoundError, generalError } = require("./middlewares/errors");
+const itemsRouter = require("./routers/itemsRouter");
+const router = require("./routers/userRouter");
 
 const app = express();
 
@@ -23,7 +25,8 @@ const startServer = (port) =>
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(helmet());
-
+app.use("/users", router);
+app.use("/items", itemsRouter);
 app.use(notFoundError);
 app.use(generalError);
 
