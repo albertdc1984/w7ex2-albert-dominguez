@@ -21,6 +21,7 @@ const startServer = (port) =>
   });
 
 app.use(morgan("dev"));
+app.use(express.json());
 app.use(helmet());
 
 app.use(notFoundError);
